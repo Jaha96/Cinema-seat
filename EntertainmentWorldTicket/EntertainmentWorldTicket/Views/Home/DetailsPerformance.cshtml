@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "DetailsPerformance";
+    Layout = "~/Views/Shared/TicketLayout.cshtml";
+}
+<div class="Latest-tv-series">
+    <div class="container">
+        <section class="slider">
+            <div class="flexslider">
+                        <div class="agile_tv_series_grid">
+                            <div class="col-md-6 agile_tv_series_grid_left">
+                                <div class="w3ls_market_video_grid1">
+                                    <video class="img-responsive" style="width:95%" controls>
+                                        <source src="@Url.Content(@Model.P_Trailer)" type="video/mp4">
+                                    </video>
+                                </div>
+                            </div>
+                            <div class="col-md-6 agile_tv_series_grid_right">
+                                <p class="fexi_header">Үзвэрийн мэдээлэл</p>
+                                <p class="fexi_header_para"><span>Үзвэрийн нэр<label>:</label></span> @Model.P_Name </p>
+                                <p class="fexi_header_para"><span>Tөрөл<label>:</label></span> @Model.P_Genre </p>
+                                <p class="fexi_header_para"><span>Найруулагч<label>:</label></span> @Model.P_Author </p>
+                                <p class="fexi_header_para">  <span>Дүрүүдэд<label>:</label> </span> @Model.P_Actors</p>
+                                <p class="fexi_header_para">  <span>Үргэжлэх хугацаа: </span> @Model.P_Hour мин</p>
+                                <p class="fexi_header_para">  <span> Манай дэлгэцнээ: </span> @Model.P_StartDay.ToString("yyyy-MM-dd")</p>
+                            </div>
+                            <div class="form-group col-lg-4" style="margin-top: 30px">
+                                <a class="btn btn-primary" href="@Url.Action("TicketOrder","Home")">Билет Захиалах</a>
+                            </div>
+                            <div class="clearfix"> </div>
+                            <div class="agileinfo_flexislider_grids">
+                            </div>
+                        </div>
+                </div>
+            </section>
+        </div>
+    </div>

@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Үзвэрүүд";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    @using (Html.BeginForm())
+    {
+        <h2 class="sub-header"></h2>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Үзвэрийн нэр</th>
+                        @*<th>Трайлер</th>*@
+                        <th>Зураг</th>
+                        <th>Найруулагч</th>
+                        <th>Төрөл</th>
+                        <th>Дүрүүдэд</th>
+                        <th>Үргэжлэх хугацаа</th>
+                        <th>Нээлт хийх хугацаа</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <tr>
+                            <td>@Model[i].P_ID</td>
+                            <td>@Model[i].P_Name</td>
+                            @*<td>
+                                <video style="width:50%">
+                                    <source src="@Url.Content(@Model[i].P_Trailer)" type="video/mp4">
+                                </video>
+                            </td>*@
+                            <td><img src="@Url.Content(Model[i].P_Poster)" style="width:50%; height:20%;"></td>
+                            <td>@Model[i].P_Author</td>
+                            <td>@Model[i].P_Genre</td>
+                            <td>@Model[i].P_Actors</td>
+                            <td>@Model[i].P_Hour</td>
+                            <td>@Model[i].P_StartDay.ToString("yyyy-MM-dd")</td>
+                            <td><a href="@Url.Action("DeletePerformance","Manager",new { id=Model[i].P_ID })">Устгах</a> | <a href="@Url.Action("UpdatePerformance","Manager",new { id=Model[i].P_ID })">Засах</a> | <a href="@Url.Action("DetailPerformance","Manager",new { id=Model[i].P_ID })">Дэлгэрэнгүй</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
+

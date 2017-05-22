@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Байгууллагууд";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    @using (Html.BeginForm())
+    {
+         <h2 class="sub-header"></h2>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Байгуулгын нэр</th>
+                        <th>Байгуулгын хаяг</th>
+                        <th>Байгуулгын вэб хаяг</th>
+                        <th>Байгуулгын Зураг</th>
+                        <th>Байгуулгын мэдээлэл</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <tr>
+                            <td>@Model[i].O_ID</td>
+                            <td>@Model[i].O_Name</td>
+                            <td>@Model[i].O_Address</td>
+                            <td>@Model[i].O_Web</td>
+                            <td><img src="@Url.Content(@Model[i].O_Picture)" style="width:50%"/></td>
+                            <td>@Model[i].O_DetailInfo</td>
+                            <td><a href="@Url.Action("DetailOrganization","Manager",new { id=Model[i].O_ID })">Дэлгэрэнгүй</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
+

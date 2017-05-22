@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Салбарын дэлгэрэнгүй";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    @using (Html.BeginForm())
+    {
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h2 class="sub-header">Салбарын дэлгэрэнгүй</h2></div>
+                <div class="panel-body">
+                    <table class="table-condensed table">
+                        <tr>
+                            <td>ID</td>
+                            <td>@Model.B_ID</td>
+                        </tr>
+                        <tr>
+                            <td>Салбарын нэр</td>
+                            <td>@Model.B_Name</td>
+                        </tr>
+                        <tr>
+                            <td>Салбарын хаяг</td>
+                            <td>@Model.B_Address</td>
+                        </tr>
+                        <tr>
+                            <td>Салбарын мэдээллэл</td>
+                            <td>@Model.B_DetailInfo</td>
+                        </tr>
+                        <tr>
+                            <td>Байгууллагын ID</td>
+                            <td>@Model.Organization.O_Name</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="form-group col-lg-12">
+                <a class="btn btn-primary" href="@Url.Action("BranchList","Manager")">Буцах</a>
+            </div>
+        </div>
+    }
+</div>
+
+

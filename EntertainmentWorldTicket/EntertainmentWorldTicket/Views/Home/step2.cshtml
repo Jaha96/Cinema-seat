@@ -1,0 +1,48 @@
+﻿@model EntertainmentWorldTicket.Models.Schedule
+@{
+    ViewBag.Title = "step2";
+    Layout = "~/Views/Shared/TicketLayout.cshtml";
+}
+@using (Html.BeginForm("TicketOrder", "Home", FormMethod.Post))
+{
+    <!-- general -->
+    <div class="general">
+        <h4 class="latest-text w3_latest_text">Захиалга</h4>
+        <div class="container">
+            <div class="agileits-news-top">
+                <ol class="breadcrumb">
+                    <li><a href="@Url.Action("Index","Home")">Home</a></li>
+                    <li><a href="@Url.Action("step1","Home")">Кино онлайн Захиалга</a></li>
+                    <li class="active">Кино, цаг сонгох</li>
+                </ol>
+            </div>
+            <label for="ContractPerion">КИНО, ЦАГ СОНГОХ</label>
+            <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+                <div class="form-group col-lg-4">
+                    @Html.DropDownListFor(m => m.Sc_ID,
+                     new SelectList(ViewBag.ScheduleList,"Value","Text"),
+                          "Кино үзэх өдрөө сонгоно уу",
+                          new { @class = "form-control",@id="List"})
+                </div>
+                <div id="div1">
+
+                </div>
+                <div class="form-group col-lg-4">
+                    <a class="btn btn-primary" href="@Url.Action("step3", "Home", new {})">Үргэлжлүүлэх</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- pop-up-box -->
+    <script src="@Url.Content("~/js/jquery.magnific-popup.js")" type="text/javascript"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-1.10.2.js")"></script>
+    <script>
+        $(document).ready(function(){
+            $("#List").change(function() {
+                var a = $("#List Option:Selected").text();
+                $("#div1").text(a);
+             })
+        })
+    </script>
+}
+

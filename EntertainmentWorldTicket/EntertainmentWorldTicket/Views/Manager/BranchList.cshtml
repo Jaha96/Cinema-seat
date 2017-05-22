@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Салбарууд";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    @using (Html.BeginForm())
+    {
+        <h2 class="sub-header"></h2>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Салбарын нэр</th>
+                        <th>Салбарын хаяг</th>
+                        <th>Байгууллагын мэдээлэл</th>
+                        <th>Байгууллагын Зураг</th>
+                        <th>Байгууллагын ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <tr>
+                            <td>@Model[i].B_ID</td>
+                            <td>@Model[i].B_Name</td>
+                            <td>@Model[i].B_Address</td>
+                            <td>@Model[i].B_DetailInfo</td>
+                            <td><img src="@Url.Content(Model[i].B_Picture)" style="width:50%"/></td>
+                            <td>@Model[i].Organization.O_Name</td>
+                            <td><a href="@Url.Action("DeleteBranch","Manager",new { id=Model[i].B_ID })">Устгах</a> | <a href="@Url.Action("UpdateBranch","Manager",new { id=Model[i].B_ID })">Засах</a> | <a href="@Url.Action("SearchBranch","Manager",new { id=Model[i].B_ID })">Хайх</a>| <a href="@Url.Action("DetailBranch","Manager",new { id=Model[i].B_ID })">Дэлгэрэнгүй</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        
+    }
+</div>
+
+

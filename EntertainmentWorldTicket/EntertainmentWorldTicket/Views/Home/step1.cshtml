@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "step1";
+    Layout = "~/Views/Shared/TicketLayout.cshtml";
+}
+@using (Html.BeginForm("TicketOrder", "Home", FormMethod.Post))
+{
+    <!-- general -->
+    <div class="general">
+        <h4 class="latest-text w3_latest_text">Захиалга</h4>
+        <div class="container">
+            <div class="agileits-news-top">
+                <ol class="breadcrumb">
+                    <li><a href="@Url.Action("Index","Home")">Home</a></li>
+                    <li class="active">Кино онлайн Захиалга</li>
+                </ol>
+            </div>
+            <label for="ContractPerion">КИНО ТЕАТР СОНГОХ</label>
+            <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <div class="col-md-4 w3l-movie-gride-agile">
+                            <a href="@Url.Action("step2","Home",new { id=Model[i].B_ID })">
+                                <img src="@Url.Content(Model[i].B_Picture)" title="album-name" alt=" " /></a>
+                                <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
+                                <div class="mid-1 agileits_w3layouts_mid_1_home">
+                                    <div class="w3l-movie-text">
+                                        <h6>@Model[i].B_Name
+                            </h6>
+                                </div>
+                            </div>
+                        </div>
+                    }
+            </div>
+        </div>
+    </div>
+    <!-- pop-up-box -->
+    <script src="@Url.Content("~/js/jquery.magnific-popup.js")" type="text/javascript"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-1.10.2.js")"></script>
+}
+

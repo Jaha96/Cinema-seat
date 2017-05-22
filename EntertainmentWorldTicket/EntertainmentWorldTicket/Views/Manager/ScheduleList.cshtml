@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Үзвэрийн хуваарь";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+@using (Html.BeginForm())
+{
+    <h2 class="sub-header"></h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Үзвэрийн үнэ</th>
+                    <th>Гарах өдөр</th>
+                    <th>Гарах огноо</th>
+                    <th>Гарах цаг</th>
+                    <th>Танхимийн нэр</th>
+                    <th>Үзвэрийн нэр</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <tr>
+                        <td>@Model[i].Sc_ID</td>
+                        <td>@Model[i].Sc_Price</td>
+                        <td>@Model[i].Sc_Day</td>
+                        <td>@Model[i].Sc_StartDate.ToString("yyyy-MM-dd")</td>
+                        <td>@Model[i].Sc_StartHour</td>
+                        <td>@Model[i].Hall.H_Name</td>
+                        <td>@Model[i].Performance.P_Name</td>
+                        <td><a href="@Url.Action("DeleteSchedule","Manager",new { id=Model[i].Sc_ID })">Устгах</a> | <a href="@Url.Action("UpdateSchedule", "Manager", new { id = Model[i].Sc_ID })">Засах</a> | <a href="@Url.Action("SearchScedule", "Manager", new { id = Model[i].Sc_ID })">Хайх</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+</div>
+

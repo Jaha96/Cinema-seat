@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div class="row placeholders">
+
+    </div>
+    @using (Html.BeginForm("Index", "Manager", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h2 class="sub-header">Энэ бол менежерийн хуудас</h2></div>
+            </div>
+        </div>
+    }
+</div>
+

@@ -1,0 +1,71 @@
+﻿@model EntertainmentWorldTicket.Models.ScheduleViewModel
+@{
+    ViewBag.Title = "Үзвэрийн хуваарь бүртгэх";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+    DateTime start = Convert.ToDateTime("1999/01/01");
+    //TimeSpan starthour = Convert.ToString();
+    string Sedew = "Үзвэрийн хуваарь бүртгэх";
+    if (Model != null)
+    {
+        //Засах нөхцөл
+        start = (DateTime)Model.Sc_StartDate;
+        //starthour=(TimeSpan)Model.Sc_StartHour;
+        Sedew = "Үзвэрийн хуваарь засах";
+    }
+}
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <h1 class="page-header">Manager</h1>
+    @using (Html.BeginForm())
+    {
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h2 class="sub-header">@Sedew</h2></div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="alert-success">@ViewBag.Message</div>
+                        <div class="alert-danger">@ViewBag.ErrorMessage</div>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="ContractPerion">Үзврийн үнэ</label>
+                        @Html.TextBoxFor(a => a.Sc_Price, new { @class = "form-control" })
+                        @Html.HiddenFor(a => a.Sc_ID)
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="ContractPerion">Гарах өдөр</label>
+                        @Html.DropDownListFor(a => a.Sc_Day, new List<SelectListItem>{
+                        new SelectListItem { Text="Даваа", Value="1"},
+                        new SelectListItem { Text="Мягмар", Value="2"},
+                        new SelectListItem { Text="Лхагва", Value="3"},
+                        new SelectListItem { Text="Пүрэв", Value="4"},
+                        new SelectListItem { Text="Баасан", Value="5"},
+                        new SelectListItem { Text="Бямба", Value="6"},
+                        new SelectListItem { Text="Ням", Value="7"},
+
+                        }, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="ContractPerion">Гарах Хугацаа</label>
+                       @Html.TextBoxFor(a => a.Sc_StartDate, new { @class = "form-control", @Value = start.ToString("yyyy-MM-dd"), @type = "date" })
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="ContractPerion">Гарах цаг</label>
+                        @Html.TextBoxFor(a => a.Sc_StartHour, new { @class = "form-control", @type="time" })
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="ContractPerion">Танхимын ID</label>
+                       @Html.DropDownListFor(a => a.H_ID, new SelectList(ViewBag.HallList, "Value", "Text"), new { @class = "form-control" })
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="ContractPerion">Үзвэр ID</label>
+                        @Html.DropDownListFor(a => a.P_ID, new SelectList(ViewBag.PerformanceList, "Value", "Text"), new { @class = "form-control" })
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <button class="btn btn-primary" type="submit">@Sedew</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    }
+</div>
+

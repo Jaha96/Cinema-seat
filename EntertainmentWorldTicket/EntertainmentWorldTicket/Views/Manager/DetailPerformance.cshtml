@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Үзвэрийн дэлгэрэнгүй";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    @using (Html.BeginForm())
+    {
+        <div class="container">
+            <div class="row">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h2 class="sub-header">Үзвэрийн дэлгэрэнгүй</h2></div>
+                    <div class="panel-body">
+                        <table class="table-condensed table">
+                            <tr>
+                                <td>ID</td>
+                                <td>@Model.P_ID</td>
+                            </tr>
+                            <tr>
+                                <td>Үзвэрийн нэр</td>
+                                <td>@Model.P_Name</td>
+                            </tr>
+                            <tr>
+                                <td>Трайлер</td>
+                                <td>@Model.P_Trailer</td>
+                            </tr>
+                            <tr>
+                                <td>Зураг</td>
+                                <td><img src="@Url.Content(Model.P_Poster) " style="width:20%"/></td>
+                            </tr>
+                            <tr>
+                                <td>Найруулагч</td>
+                                <td>@Model.P_Author</td>
+                            </tr>
+                            <tr>
+                                <td>Төрөл</td>
+                                <td>@Model.P_Genre</td>
+                            </tr>
+                            <tr>
+                                <td>Дүрүүдэд</td> 
+                                <td>@Model.P_Actors</td>
+                            </tr>
+                            <tr>
+                                <td>Үргэжлэх хугацаа</td>
+                                <td>@Model.P_Hour</td>
+                            </tr>
+                            <tr>
+                                <td>Нээлт хийх хугацаа</td>
+                                <td>@Model.P_StartDay.ToString("yyyy-MM-dd")</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="form-group col-lg-12">
+                    <a class="btn btn-primary" href="@Url.Action("PerformanceList","Manager")">Буцах</a>
+                </div>
+            </div>
+        </div>
+    }
+    </div>

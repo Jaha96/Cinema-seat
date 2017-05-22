@@ -1,0 +1,80 @@
+﻿@model EntertainmentWorldTicket.Models.PerformanceViewModel
+
+@{
+    ViewBag.Title = "Үзвэр бүртгэх";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+    DateTime start = Convert.ToDateTime("1999/01/01");
+    string Sedew = "Үзвэр бүртгэх";
+    if (Model != null)
+    {
+        //Засах нөхцөл
+        start = (DateTime)Model.P_StartDay;
+        Sedew = "Үзвэр засах";
+    }
+}
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <h1 class="page-header">Manager</h1>
+
+    <div class="row placeholders">
+
+    </div>
+    @using (Html.BeginForm("PerformanceRegister", "Manager", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h2 class="sub-header">@Sedew</h2></div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="alert-success">@ViewBag.Message</div>
+                        <div class="alert-danger">@ViewBag.ErrorMessage</div>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="ContractPerion">Үзвэрийн нэр</label>
+                        @Html.TextBoxFor(a => a.P_Name, new { @class = "form-control" })
+                        @Html.HiddenFor(a => a.P_ID)
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <label for="ContractPerion">Трайлер</label>
+                        @Html.TextBoxFor(a => a.VideoFile, new { @class = "form-control", @type = "file" })
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="ContractPerion">Зураг</label>
+                        @Html.TextBoxFor(a => a.PhotoFile, new { @class = "form-control", @type = "file",@size="20000"})
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <label for="ContractPerion">Найруулагч</label>
+                        @Html.TextBoxFor(a => a.P_Author, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="ContractPerion">Төрөл</label>
+                        @Html.TextBoxFor(a => a.P_Genre, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="ContractPerion">Дүрүүд</label>
+                        @Html.TextBoxFor(a => a.P_Actors, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="ContractPerion">Нээлт эхлэх өдөр</label>
+                        @Html.TextBoxFor(a => a.P_StartDay, new { @class = "form-control", @Value =start.ToString("yyyy-MM-dd"), @type = "date" })
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="ContractPerion">Үргэлжлэх хугацаа</label>
+                        @Html.TextBoxFor(a => a.P_Hour, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label for="ContractPerion">Үзвэрийн мэдээлэл</label>
+                        @Html.TextAreaFor(a => a.P_DetailInfo, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <button class="btn btn-primary" type="submit">@Sedew</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    }
+</div>
+

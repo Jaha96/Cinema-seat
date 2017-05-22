@@ -1,0 +1,58 @@
+﻿
+@model EntertainmentWorldTicket.Models.BranchViewModel
+@{
+    ViewBag.Title = "Салбар бүртгэх";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+    string Sedew = "Салбар бүртгэх";
+    if (Model != null)
+    {
+        //Засах нөхцөл
+        Sedew = "Салбар засах";
+    }
+}
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <h1 class="page-header">Manager</h1>
+
+    <div class="row placeholders">
+
+    </div>
+    @using (Html.BeginForm("BranchRegister", "Manager", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h2 class="sub-header">@Sedew</h2></div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="alert-success">@ViewBag.Message</div>
+                        <div class="alert-danger">@ViewBag.ErrorMessage</div>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="ContractPerion">Салбарын нэр</label>
+                        @Html.TextBoxFor(a => a.B_Name, new { @class = "form-control" })
+                        @Html.HiddenFor(a => a.B_ID)
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="ContractPerion">Салбарын хаяг</label>
+                        @Html.TextBoxFor(a => a.B_Address, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label for="ContractPerion">Салбарын мэдээлэл</label>
+                        @Html.TextAreaFor(a => a.B_DetailInfo, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="ContractPerion">Байгуулагын ID</label>
+                        @Html.DropDownListFor(a => a.O_ID, new SelectList(ViewBag.OrganizationList, "Value", "Text"), new { @class = "form-control" })
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="ContractPerion">Салбарын Зураг</label>
+                        @Html.TextBoxFor(a => a.PhotoFile1, new { @class = "form-control", @type = "file", @size = "20000" })
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <button class="btn btn-primary" type="submit">@Sedew</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    }
+</div>
